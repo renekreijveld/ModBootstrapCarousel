@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension
+	type="module"
+	version="2.5"
+	client="site"
+	method="upgrade">
+	<name>Bootstrap Carousel</name>
+	<author>René Kreijveld</author>
+	<creationDate>October 2012</creationDate>
+	<copyright>Copyright (C) 2012 Christian Hent</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<authorEmail>email@renekreijveld.nl</authorEmail>
+	<authorUrl>www.renekreijveld.nl</authorUrl>
+	<version>1.1.8</version>
+	<description>MOD_BOOTSTRAP_CAROUSEL_XML_DESCRIPTION</description>
+	<files>
+		<filename module="mod_bootstrap_carousel">mod_bootstrap_carousel.php</filename>
+		<folder>tmpl</folder>
+		<filename>helper.php</filename>
+		<filename>index.html</filename>
+		<filename>mod_bootstrap_carousel.xml</filename>
+	</files>
+
+	<languages>
+		<language tag="en-GB">language/en-GB/en-GB.mod_bootstrap_carousel.ini</language>
+		<language tag="en-GB">language/en-GB/en-GB.mod_bootstrap_carousel.sys.ini</language>
+		<language tag="nl-NL">language/nl-NL/nl-NL.mod_bootstrap_carousel.ini</language>
+		<language tag="nl-NL">language/nl-NL/nl-NL.mod_bootstrap_carousel.sys.ini</language>
+	</languages>
+
+	<media folder="media" destination="mod_bootstrap_carousel">
+		<folder>css</folder>
+		<folder>js</folder>
+	</media>
+
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+				<field
+					name="interval"
+					type="text"
+					size="6"
+					filter="integer"
+					default="5000"
+					label="MOD_BOOTSTRAP_CAROUSEL_FIELD_INTERVAL_LABEL"
+					description="MOD_BOOTSTRAP_CAROUSEL_FIELD_INTERVAL_DESC" />
+				<field name="pause" type="radio" default="hover"
+					label="MOD_BOOTSTRAP_CAROUSEL_FIELD_PAUSE_LABEL"
+					description="MOD_BOOTSTRAP_CAROUSEL_FIELD_PAUSE_DESC"
+				>
+					<option value="hover">JYES
+					</option>
+					<option value="none">JNO
+					</option>
+				</field>
+				<field name="showcontrols" type="radio" default="yes"
+					label="MOD_BOOTSTRAP_CAROUSEL_FIELD_SHOWCONTROLS_LABEL"
+					description="MOD_BOOTSTRAP_CAROUSEL_FIELD_SHOWCONTROLS_DESC"
+				>
+					<option value="yes">JYES
+					</option>
+					<option value="no">JNO
+					</option>
+				</field>
+				<field name="source" type="list" default="imageleft"
+					label="MOD_BOOTSTRAP_CAROUSEL_FIELD_SOURCE_LABEL"
+					description="MOD_BOOTSTRAP_CAROUSEL_FIELD_SOURCE_DESC"
+				>
+					<option value="imageleft">MOD_BOOTSTRAP_CAROUSEL_VALUE_IMAGELEFT
+					</option>
+					<option value="contentleft">MOD_BOOTSTRAP_CAROUSEL_VALUE_CONTENTLEFT
+					</option>
+					<option value="justimages">MOD_BOOTSTRAP_CAROUSEL_VALUE_JUSTIMAGES
+					</option>
+					<option value="justcontent">MOD_BOOTSTRAP_CAROUSEL_VALUE_JUSTCONTENT
+					</option>
+				</field>
+				<field
+					name="division"
+					type="list"
+					default="0"
+					label="MOD_BOOTSTRAP_CAROUSEL_FIELD_DIVISION_LABEL"
+					description="MOD_BOOTSTRAP_CAROUSEL_FIELD_DIVISION_DESC">
+					<option
+						value="50">50 | 50</option>
+					<option
+						value="40">40 | 60</option>
+					<option
+						value="60">60 | 40</option>
+					<option
+						value="33">33 | 67</option>
+					<option
+						value="67">67 | 33</option>
+					<option
+						value="25">25 | 75</option>
+					<option
+						value="75">75 | 25</option>
+				</field>
+				<field name="show_link" type="radio" default="0"
+					label="MOD_BOOTSTRAP_CAROUSEL_FIELD_SHOW_LINK_LABEL"
+					description="MOD_BOOTSTRAP_CAROUSEL_FIELD_SHOW_LINK_DESC"
+				>
+					<option value="1">JSHOW
+					</option>
+					<option value="0">JHIDE
+					</option>
+				</field>
+				<field type="spacer" hr="true" />
+				<field name="jquery" type="radio" default="0"
+					label="MOD_BOOTSTRAP_CAROUSEL_FIELD_LOAD_JQUERY_LABEL"
+					description="MOD_BOOTSTRAP_CAROUSEL_FIELD_LOAD_JQUERY_DESC"
+				>
+					<option value="1">JYES
+					</option>
+					<option value="0">JNO
+					</option>
+				</field>
+				<field name="bootstrap" type="radio" default="0"
+					label="MOD_BOOTSTRAP_CAROUSEL_FIELD_LOAD_BT_LABEL"
+					description="MOD_BOOTSTRAP_CAROUSEL_FIELD_LOAD_BT_DESC"
+				>
+					<option value="1">JYES
+					</option>
+					<option value="0">JNO
+					</option>
+				</field>
+			</fieldset>
+			<fieldset name="filtering"
+				label="MOD_BOOTSTRAP_CAROUSEL_CATEGORY_FIELD_GROUP_FILTERING_LABEL"
+			>
+				<field
+					name="image_source"
+					type="radio"
+					default="0"
+					label="MOD_BOOTSTRAP_CAROUSEL_FIELD_IMAGE_SRC_LABEL"
+					description="MOD_BOOTSTRAP_CAROUSEL_FIELD_IMAGE_SRC_DESC">
+					<option
+						value="0">MOD_BOOTSTRAP_CAROUSEL_IMAGE_SRC_OPTION_VALUE_IMG_INTRO</option>
+					<option
+						value="1">MOD_BOOTSTRAP_CAROUSEL_IMAGE_SRC_OPTION_VALUE_IMG_FULLTEXT</option>
+				</field>
+				<field
+					name="count"
+					type="text"
+					filter="integer"
+					default="0"
+					label="MOD_BOOTSTRAP_CAROUSEL_FIELD_COUNT_LABEL"
+					description="MOD_BOOTSTRAP_CAROUSEL_FIELD_COUNT_DESC" />
+				<field name="catid" type="category" extension="com_content"
+					multiple="false" size="10"
+					label="JCATEGORY"
+					description="MOD_BOOTSTRAP_CAROUSEL_CATEGORY_FIELD_CATEGORY_DESC"
+				>
+				</field>
+			</fieldset>
+			<fieldset name="ordering"
+				label="MOD_BOOTSTRAP_CAROUSEL_CATEGORY_FIELD_GROUP_ORDERING_LABEL"
+			>
+				<field name="article_ordering" type="list"
+					default="a.title"
+					label="MOD_BOOTSTRAP_CAROUSEL_CATEGORY_FIELD_ARTICLEORDERING_LABEL"
+					description="MOD_BOOTSTRAP_CAROUSEL_CATEGORY_FIELD_ARTICLEORDERING_DESC"
+				>
+					<option value="a.ordering">MOD_BOOTSTRAP_CAROUSEL_CATEGORY_OPTION_ORDERING_VALUE
+					</option>
+					<option value="fp.ordering">MOD_BOOTSTRAP_CAROUSEL_CATEGORY_OPTION_ORDERINGFEATURED_VALUE
+					</option>
+					<option value="a.hits">MOD_BOOTSTRAP_CAROUSEL_CATEGORY_OPTION_HITS_VALUE
+					</option>
+					<option value="a.title">JGLOBAL_TITLE
+					</option>
+					<option value="a.id">MOD_BOOTSTRAP_CAROUSEL_CATEGORY_OPTION_ID_VALUE
+					</option>
+					<option value="a.alias">JFIELD_ALIAS_LABEL
+					</option>
+					<option value="a.created">MOD_BOOTSTRAP_CAROUSEL_CATEGORY_OPTION_CREATED_VALUE
+					</option>
+					<option value="modified">MOD_BOOTSTRAP_CAROUSEL_CATEGORY_OPTION_MODIFIED_VALUE
+					</option>
+					<option value="publish_up">MOD_BOOTSTRAP_CAROUSEL_CATEGORY_OPTION_STARTPUBLISHING_VALUE
+					</option>
+					<option value="a.publish_down">MOD_BOOTSTRAP_CAROUSEL_CATEGORY_OPTION_FINISHPUBLISHING_VALUE
+					</option>
+				</field>
+				<field name="article_ordering_direction" type="list"
+					default="ASC"
+					label="MOD_BOOTSTRAP_CAROUSEL_CATEGORY_FIELD_ARTICLEORDERINGDIR_LABEL"
+					description="MOD_BOOTSTRAP_CAROUSEL_CATEGORY_FIELD_ARTICLEORDERINGDIR_DESC"
+				>
+					<option value="DESC">MOD_BOOTSTRAP_CAROUSEL_CATEGORY_OPTION_DESCENDING_VALUE
+					</option>
+					<option value="ASC">MOD_BOOTSTRAP_CAROUSEL_CATEGORY_OPTION_ASCENDING_VALUE
+					</option>
+				</field>
+			</fieldset>
+			<fieldset
+				name="advanced">
+				<field
+					name="moduleclass_sfx"
+					type="text"
+					label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL"
+					description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC" />
+				<field
+					name="cache"
+					type="list"
+					default="1"
+					label="COM_MODULES_FIELD_CACHING_LABEL"
+					description="COM_MODULES_FIELD_CACHING_DESC">
+					<option
+						value="1">JGLOBAL_USE_GLOBAL</option>
+					<option
+						value="0">COM_MODULES_FIELD_VALUE_NOCACHING</option>
+				</field>
+				<field
+					name="cache_time"
+					type="text"
+					default="900"
+					label="COM_MODULES_FIELD_CACHE_TIME_LABEL"
+					description="COM_MODULES_FIELD_CACHE_TIME_DESC" />
+				<field
+					name="cachemode"
+					type="hidden"
+					default="static">
+					<option
+						value="static"></option>
+				</field>
+			</fieldset>
+		</fields>
+	</config>
+</extension>
